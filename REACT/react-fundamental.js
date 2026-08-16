@@ -209,3 +209,84 @@ function Button() {
 // Example: A button that toggles a dropdown menu.
 
 const [isOpen, setIsOpen] = useState(false);
+
+
+
+
+
+
+
+
+
+
+
+
+// What Is the Context API?
+// React's Context API lets you share data with any component in your tree — without passing props through every level.
+
+// How It Works in 3 Steps
+
+// Step 1: Create a Context
+const ThemeContext = React.createContext('light');
+
+//Step 2: Wrap components with a Provider
+<ThemeContext.Provider value="dark">
+  <App />
+</ThemeContext.Provider>
+
+//Step 3: Read the value anywhere inside
+const theme = useContext(ThemeContext);
+
+// Great Use Cases for Context
+// 🌍 Current user / authentication
+// 🎨 App theme (dark/light mode)
+// 🌐 Selected language
+// 🛒 Shopping cart totals
+// What to Avoid
+// Don't use Context for data that changes very frequently (like animation frames or typing input). Every consumer re-renders when Context value changes.
+
+//✅ Context API is built into React — no extra library needed. Perfect for beginner projects!
+
+
+// The Three Building Blocks of Redux
+
+// Redux follows one simple rule: state changes must be predictable.
+
+// 1. Store
+// The store holds your entire app state as one JavaScript object.
+const store = createStore(reducer);
+console.log(store.getState()); // { count: 0 }
+
+// 2. Actions
+// Actions are plain objects that describe what happened.
+{ type: 'INCREMENT' }
+{ type: 'ADD_ITEM', payload: { name: 'Apple' } }
+
+// 3. Reducers
+// Reducers decide how the state changes based on the action.
+function counterReducer(state = { count: 0 }, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+
+
+
+//Context API vs Redux: Which Should You Choose?
+
+// Choose Context API when:
+// Your app is small or medium-sized
+// You share data that doesn't change too often
+// You want zero extra dependencies
+
+// Choose Redux when:
+// Many components share complex state
+// You need powerful debugging (time-travel devtools)
+// Your team follows strict data flow patterns
+
+// For beginners: Start with Context API. Once your app grows or you feel limited, explore Redux Toolkit — the modern, easier way to use Redux.
+
